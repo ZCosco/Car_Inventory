@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="bg-dark text-light text-center shadow">
+    <div class="container p-5 bg-dark">
+        <div class="row">
+            <div class="d-md-flex bg-dark align-items-center justify-content-evenly">
+                <h1 class="col text-center"><br>Zach's Car Inventory</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="bg-light text-center">
+    <div class="container">
+        <div class="car-grid">
+            {% for car in cars %}
+            <div class="car">
+                <img class="car-image" src="{{ url_for('static', filename='images/' + car.make + '-' + car.model + '.jpg') }}" alt="Car Image">
+                <div class="car-details">
+                    <h2 style="font-size: 44px;" >{{ car.make }} {{ car.model }}</h2>
+                    <p>Year: {{ car.year }}</p>
+                    <p>Color: {{ car.color }}</p>
+                    <p>Mileage: {{ car.mileage }}</p>
+                    <p>In Stock: {{ car.in_stock }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
